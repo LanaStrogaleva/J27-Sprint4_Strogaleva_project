@@ -36,43 +36,24 @@ public class OrderScooter {
     @Before
     public void setUp() {
         driver = new ChromeDriver();
+        MainPage mainPage = new MainPage(driver);
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        mainPage.open();
 
     }
 
     @Test
     public void orderScooterByHeaderButton() {
-        MainPage mainPage = new MainPage(driver);
+         MainPage mainPage = new MainPage(driver);
         OrderFormPage orderFormPage = new OrderFormPage(driver);
         AboutRentPage aboutRentPage = new AboutRentPage(driver);
 
-        mainPage.open();
-
         //Кликнуть на кнопку Заказать в шапке
         mainPage.clickHeaderOrderButton();
-        // Заполнить поле Имя
-        orderFormPage.inputNameField(testData1.name);
-        // Заполнить поле Фамилия
-        orderFormPage.inputSurnameField(testData1.surname);
-        // Заполнить поле адрес
-        orderFormPage.inputAddressField(testData1.address);
-        // Заполнить поле метро
-        orderFormPage.inputMetroStationField(testData1.station);
-        //Заполнить поле Телефон
-        orderFormPage.inputPhoneField(testData1.phoneNumber);
-        // Кликнуть на кнопку Далее и перейти на страницу Про Аренду
-        orderFormPage.clickNextButton();
-
-        // Заполнить поле Когда привезти самокат
-        aboutRentPage.inputDeliveryDateField();
-        // Заполнить поле Срок аренды
-        aboutRentPage.inputRentTimeField();
-        // Выбрать Чек-бокс Цвет самоката
-        aboutRentPage.inputColorField();
-        // Заполнить поле Комментарий для курьера
-        aboutRentPage.inputCommentField(testData1.comment);
-        // Кликнуть на кнопку Заказать
-        aboutRentPage.clickOrderButton();
+        // Заполнить форму заказа
+        orderFormPage.fillOrderForm(testData1.name, testData1.surname, testData1.address, testData1.station, testData1.phoneNumber);
+        // Заполнить форму Про аренду
+        aboutRentPage.fillAboutRentForm(testData1.comment);
         // Кликнуть на кнопку ДА
         aboutRentPage.clickYesButton();
         // Проверить, что появилось всплывающее окно с сообщением об успешном создании заказа
@@ -86,33 +67,12 @@ public class OrderScooter {
         OrderFormPage orderFormPage = new OrderFormPage(driver);
         AboutRentPage aboutRentPage = new AboutRentPage(driver);
 
-        mainPage.open();
-
         //Кликнуть на кнопку нижнюю кнопку Заказать
         mainPage.clickLowerOrderButton();
-        // Заполнить поле Имя
-        orderFormPage.inputNameField(testData2.name);
-        // Заполнить поле Фамилия
-        orderFormPage.inputSurnameField(testData2.surname);
-        // Заполнить поле адрес
-        orderFormPage.inputAddressField(testData2.address);
-        // Заполнить поле метро
-        orderFormPage.inputMetroStationField(testData2.station);
-        //Заполнить поле Телефон
-        orderFormPage.inputPhoneField(testData2.phoneNumber);
-        // Кликнуть на кнопку Далее и перейти на страницу Про Аренду
-        orderFormPage.clickNextButton();
-
-        // Заполнить поле Когда привезти самокат
-        aboutRentPage.inputDeliveryDateField();
-        // Заполнить поле Срок аренды
-        aboutRentPage.inputRentTimeField();
-        // Выбрать Чек-бокс Цвет самоката
-        aboutRentPage.inputColorField();
-        // Заполнить поле Комментарий для курьера
-        aboutRentPage.inputCommentField(testData2.comment);
-        // Кликнуть на кнопку Заказать
-        aboutRentPage.clickOrderButton();
+        // Заполнить форму заказа
+        orderFormPage.fillOrderForm(testData2.name, testData2.surname, testData2.address, testData2.station, testData2.phoneNumber);
+        // Заполнить форму Про аренду
+        aboutRentPage.fillAboutRentForm(testData2.comment);
         // Кликнуть на кнопку ДА
         aboutRentPage.clickYesButton();
         // Проверить, что появилось всплывающее окно с сообщением об успешном создании заказа

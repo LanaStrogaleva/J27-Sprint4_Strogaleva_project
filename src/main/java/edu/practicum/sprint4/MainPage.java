@@ -31,13 +31,13 @@ public class MainPage {
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
     }
     //Кликнуть на вопрос
-    public void clickQuestion(int i) {
-        By question = By.xpath(".//div[@class='accordion']/div["+ (i+1) + "]");
+    public void clickQuestion(int index) {
+        By question = By.xpath(".//div[@class = 'accordion']/div[" + index +"]");
         driver.findElement(question).click();
     }
     // Получить текст ответа на вопрос
-    public String getAnswers(int i) {
-        By answer = By.xpath(".//div[@id='accordion__panel-" + i + "']/p");
+    public String getAnswers(int index) {
+        By answer = By.xpath(".//div[@class = 'accordion']/div[" + index +"]//p");
         return driver.findElement(answer).getText();
     }
     //кликнуть на верхнюю кнопку "Заказать" в шапке

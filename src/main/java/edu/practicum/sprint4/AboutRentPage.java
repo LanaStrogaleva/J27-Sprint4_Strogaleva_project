@@ -49,17 +49,27 @@ public class AboutRentPage {
     public void inputCommentField(String comment) {
         driver.findElement(commentField).sendKeys(comment);
     }
+
     //Кликнуть на кнопку Заказать
     public void clickOrderButton() {
         driver.findElement(orderButton).click();
     }
+
     // Кликнуть на кнопку ДА
     public void clickYesButton () {
         driver.findElement(yesButton).click();
     }
-    // Получить текст "Заказ оформлен" в всплывающем окне с сообщением об успешном создании заказа.
 
+    // Получить текст "Заказ оформлен" в всплывающем окне с сообщением об успешном создании заказа.
     public String getTextFromSuccessfulMessage () {
         return driver.findElement(successfulMessage).getText();
+    }
+
+    public void fillAboutRentForm(String comment) {
+        inputDeliveryDateField();
+        inputRentTimeField();
+        inputColorField();
+        inputCommentField(comment);
+        clickOrderButton();
     }
 }

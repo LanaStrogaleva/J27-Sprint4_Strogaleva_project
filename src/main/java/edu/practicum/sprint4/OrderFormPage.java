@@ -47,5 +47,15 @@ public class OrderFormPage {
         driver.findElement(nextButton).click();
     }
 
+    // Заполнить форму заказа
+    public void fillOrderForm(String name, String surname, String address, String station, String phoneNumber){
+        inputNameField(name);
+        inputSurnameField(surname);
+        inputAddressField(address);
+        inputMetroStationField(station);
+        inputPhoneField(phoneNumber);
+        clickNextButton();
+    }
+
 
 }
